@@ -1,0 +1,161 @@
+body {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4vmin;
+  font-family: monospace;
+  font-size: 15vmin;
+  min-height: 100vh;
+  color: #eee;
+  background: hsl(200, 10%, 5%);
+}
+
+input {
+  display: none;
+}
+
+label,
+button {
+  all: unset;
+  display: block;
+  font-size: 0.5em;
+  background: hsl(200, 70%, 20%);
+  padding: 0.3em 1em;
+  border-radius: 0.5em;
+  box-shadow: 0.1em 0.1em #eee;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 300ms;
+}
+
+:is(label, button):hover {
+  background: hsl(200, 70%, 30%);
+}
+
+.clock-face {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 0.5em;
+}
+
+.digit::after {
+  content: "0";
+  animation: tic-10 calc(var(--duration) * 10) infinite linear paused;
+}
+.digit.six::after {
+  animation: tic-6 calc(var(--duration) * 6) infinite linear paused;
+}
+[class*="10"]::before {
+  content: ":";
+}
+
+[for="start"]::after {
+  content: "start";
+}
+body:has(#start:checked) .digit::after {
+  animation-play-state: running;
+}
+body:has(#start:checked) [for="start"]::after {
+  content: "pause";
+}
+body:has(.reset:active) .digit::after {
+  animation: unset;
+}
+
+.hour-1 {
+  --duration: 3600s;
+}
+.min-10 {
+  --duration: 600s;
+}
+.min-1 {
+  --duration: 60s;
+}
+.sec-10 {
+  --duration: 10s;
+}
+.sec-1 {
+  --duration: 1s;
+}
+.cent-10 {
+  --duration: 0.1s;
+}
+.cent-1 {
+  --duration: 0.01s;
+}
+
+@keyframes tic-10 {
+  0%,
+  9.99% {
+    content: "0";
+  }
+  10%,
+  19.99% {
+    content: "1";
+  }
+  20%,
+  29.99% {
+    content: "2";
+  }
+  30%,
+  39.99% {
+    content: "3";
+  }
+  40%,
+  49.99% {
+    content: "4";
+  }
+  50%,
+  59.99% {
+    content: "5";
+  }
+  60%,
+  69.99% {
+    content: "6";
+  }
+  70%,
+  79.99% {
+    content: "7";
+  }
+  80%,
+  89.99% {
+    content: "8";
+  }
+  90%,
+  99.99% {
+    content: "9";
+  }
+}
+
+@keyframes tic-6 {
+  0%,
+  16.59% {
+    content: "0";
+  }
+  16.6%,
+  33.29% {
+    content: "1";
+  }
+  33.3%,
+  49.99% {
+    content: "2";
+  }
+  50%,
+  66.59% {
+    content: "3";
+  }
+  66.6%,
+  83.29% {
+    content: "4";
+  }
+  83.3%,
+  99.99% {
+    content: "5";
+  }
+}

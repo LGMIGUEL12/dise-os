@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Versión 1 de carrusel deslizante</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <input type="radio" name="slider" class="d-none" id="s1" checked />
+      <input type="radio" name="slider" class="d-none" id="s2" />
+      <input type="radio" name="slider" class="d-none" id="s3" />
+      <input type="radio" name="slider" class="d-none" id="s4" />
+      <input type="radio" name="slider" class="d-none" id="s5" />
+
+      <div class="cards">
+        <label for="s1" id="slide1">
+          <div class="card">
+            <div class="image">
+              <img src="img/gris.jpeg" alt="" />
+              <div class="dots">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="infos">
+              <span class="name">Llavero Nike de Cuero</span>
+              <span class="lorem"
+                >Lorem ipsum dolor sit amet, sit amet adipiscing elit. Aenean
+                vel ansd . Nullam lorem. Nulla eu sodales</span
+              >
+            </div>
+            <a href="/contact" class="btn-contact">detalles</a>
+            <div class="socials">
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARJJREFUSEvd1M8xREEQBvDfRoAMiAARCAER4MqBEIiAC1dEgAyEQARkgAioT3lbr3hvZ97WbtWWPs709Penu2dkzjGac33/C+BzhnY9YTP12hbNEuADy78BGgEXOMYt9geqOsF5+21Xk1fxgnesDAR4xBYOcNOnIOfxcL2dWAEUS95+8kIsBHvHtJH6gJ2K4klJ3h2esdG86duDTjYFoFiyhzOclgByf4/tSvbttIxnLP6OSZucCboeAJDRzASO2ZcAcp9GLWENrwPAxqmlv6jxNXbtzgMgOxE/o6Im/hAuKWjGL2ObBSrFVAClohPvaxSkwCUOcYWjVsW+8+omN4ntn7bvB+4kuzAKpu5DrYLFBfgCoYYtGZGfX0sAAAAASUVORK5CYII="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATpJREFUSEvFleFRwzAMhb9OQEeACYAJChuwAXQCGIVOUNiADYANYAIYASYo93JSTnWd2PFdiv+ksaL39J5kd8HMazEzPv9GcAPcAhem8BvYAC/2rvg9cGrvH8BziPfGpAqWwBYQQG692ebVQFwFrIEfj6cEquQc+AUegAj4CJxYosf1vZaUelx7lzmCO6teyZLeV2EfS10kzMVlpYqQiiflRQVKXsVgw4R5ke9AZ2Mk2BngGaBKWpaUf1lih31Ugtktcv/UPNmUNrFkmYZA9uiZbbIAfEz1vJ5AItBXG9fPcEAPrgofRZ2FWpIUXNMzeNCkYgrJKHg6RdHjGpIi+BhBSUkVeIlgiET7saF7nqejVvN/kNrll5umZRS8RoEXFEm0VwU+hSDapd/FynPXdemkNsVretAEfDQFf3ZDVxl/VBnpAAAAAElFTkSuQmCC"
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN5JREFUSEvtld0NAVEQRs9WQAeohBKUQAXogApQASUogU7ogArIt5mbjM1NdoeseNh52WTn5+x8c3duQctWtFyfHGACHIBhEH4F5sDZ5+UAChwEi6dw5Y7qAE8LiMqXzcsV6QBvqnQS+RPZnaLaf/v/JeoDW+tjBdwrPX3VwRpYAILIVHwHbBzkI8DUvjqt7osVHNtT21PdnIAwQHtdd4PsBszcrtf7o1vrPrbxqlDhByB5JEfOlubvOWdjwN6Sq8OsgjSXNCP5agFqV3JI34hpTpItyVrmRm+tCPA3gBfR5jsZb1ZtiAAAAABJRU5ErkJggg=="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQNJREFUSEvtlOERwUAQhb90oANK0AE6UAIVoBM60AEqQAXoQAlUwDxzMZtLzl2SyT/vZ2Zvv3dv95LRsbKO+9MU0AMeKeaaAq7AOAXSFPACBJnEIG0ASigKaQuIQmKAAbAAhi7z0FyDNwkBtCW7SFMfVgmpAsjtERCkrkoQH6BILg2b52YKEB9wAkZ1bXv1N2AK3PXdAhSN3LfRAZjZt2EBa7cxvwByp9n0K4o2wNL/bgF+PGdg6x6TcrXSS7aau9oS1wKUmZypsa75yTCgHPB0q+wb+B6zAB1aAYoqJtUWhhk6YAFyrUhStPeHmQJIaVy7JvYvqt3w1xa1blbV4H+DaKxv+tE1GZDEkqIAAAAASUVORK5CYII="
+              />
+            </div>
+          </div>
+        </label>
+
+        <label for="s2" id="slide2">
+          <div class="card">
+            <div class="image">
+              <img src="img/negro.jpeg" alt="" />
+              <div class="dots">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                <div class="dot3"></div>
+              </div>
+            </div>
+            <div class="infos">
+              <span class="name">Llavero Nike de Cuero</span>
+              <span class="lorem"
+                >Lorem ipsum dolor sit, adipiscing elit. Aenean vel sit ansd .
+                Nullam lorem. Nulla eu sodales karma stellus</span
+              >
+            </div>
+            <a href="/contact" class="btn-contact">Detalles</a>
+            <div class="socials">
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARJJREFUSEvd1M8xREEQBvDfRoAMiAARCAER4MqBEIiAC1dEgAyEQARkgAioT3lbr3hvZ97WbtWWPs709Penu2dkzjGac33/C+BzhnY9YTP12hbNEuADy78BGgEXOMYt9geqOsF5+21Xk1fxgnesDAR4xBYOcNOnIOfxcL2dWAEUS95+8kIsBHvHtJH6gJ2K4klJ3h2esdG86duDTjYFoFiyhzOclgByf4/tSvbttIxnLP6OSZucCboeAJDRzASO2ZcAcp9GLWENrwPAxqmlv6jxNXbtzgMgOxE/o6Im/hAuKWjGL2ObBSrFVAClohPvaxSkwCUOcYWjVsW+8+omN4ntn7bvB+4kuzAKpu5DrYLFBfgCoYYtGZGfX0sAAAAASUVORK5CYII="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATpJREFUSEvFleFRwzAMhb9OQEeACYAJChuwAXQCGIVOUNiADYANYAIYASYo93JSTnWd2PFdiv+ksaL39J5kd8HMazEzPv9GcAPcAhem8BvYAC/2rvg9cGrvH8BziPfGpAqWwBYQQG692ebVQFwFrIEfj6cEquQc+AUegAj4CJxYosf1vZaUelx7lzmCO6teyZLeV2EfS10kzMVlpYqQiiflRQVKXsVgw4R5ke9AZ2Mk2BngGaBKWpaUf1lih31Ugtktcv/UPNmUNrFkmYZA9uiZbbIAfEz1vJ5AItBXG9fPcEAPrgofRZ2FWpIUXNMzeNCkYgrJKHg6RdHjGpIi+BhBSUkVeIlgiET7saF7nqejVvN/kNrll5umZRS8RoEXFEm0VwU+hSDapd/FynPXdemkNsVretAEfDQFf3ZDVxl/VBnpAAAAAElFTkSuQmCC"
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN5JREFUSEvtld0NAVEQRs9WQAeohBKUQAXogApQASUogU7ogArIt5mbjM1NdoeseNh52WTn5+x8c3duQctWtFyfHGACHIBhEH4F5sDZ5+UAChwEi6dw5Y7qAE8LiMqXzcsV6QBvqnQS+RPZnaLaf/v/JeoDW+tjBdwrPX3VwRpYAILIVHwHbBzkI8DUvjqt7osVHNtT21PdnIAwQHtdd4PsBszcrtf7o1vrPrbxqlDhByB5JEfOlubvOWdjwN6Sq8OsgjSXNCP5agFqV3JI34hpTpItyVrmRm+tCPA3gBfR5jsZb1ZtiAAAAABJRU5ErkJggg=="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQNJREFUSEvtlOERwUAQhb90oANK0AE6UAIVoBM60AEqQAXoQAlUwDxzMZtLzl2SyT/vZ2Zvv3dv95LRsbKO+9MU0AMeKeaaAq7AOAXSFPACBJnEIG0ASigKaQuIQmKAAbAAhi7z0FyDNwkBtCW7SFMfVgmpAsjtERCkrkoQH6BILg2b52YKEB9wAkZ1bXv1N2AK3PXdAhSN3LfRAZjZt2EBa7cxvwByp9n0K4o2wNL/bgF+PGdg6x6TcrXSS7aau9oS1wKUmZypsa75yTCgHPB0q+wb+B6zAB1aAYoqJtUWhhk6YAFyrUhStPeHmQJIaVy7JvYvqt3w1xa1blbV4H+DaKxv+tE1GZDEkqIAAAAASUVORK5CYII="
+              />
+            </div>
+          </div>
+        </label>
+
+        <label for="s3" id="slide3">
+          <div class="card">
+            <div class="image">
+              <img src="img/rojo.jpeg" alt="" />
+              <div class="dots">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                <div class="dot3"></div>
+              </div>
+            </div>
+            <div class="infos">
+              <span class="name">Llavero Nike de Cuero</span>
+              <span class="lorem"
+                >Lorem ipsum dolor, sit amet let kar adipiscing. Aenean vel
+                velit sit ansd . Nullam lorem. Nulla karma stellus</span
+              >
+            </div>
+            <a href="/contact" class="btn-contact">detalles</a>
+            <div class="socials">
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARJJREFUSEvd1M8xREEQBvDfRoAMiAARCAER4MqBEIiAC1dEgAyEQARkgAioT3lbr3hvZ97WbtWWPs709Penu2dkzjGac33/C+BzhnY9YTP12hbNEuADy78BGgEXOMYt9geqOsF5+21Xk1fxgnesDAR4xBYOcNOnIOfxcL2dWAEUS95+8kIsBHvHtJH6gJ2K4klJ3h2esdG86duDTjYFoFiyhzOclgByf4/tSvbttIxnLP6OSZucCboeAJDRzASO2ZcAcp9GLWENrwPAxqmlv6jxNXbtzgMgOxE/o6Im/hAuKWjGL2ObBSrFVAClohPvaxSkwCUOcYWjVsW+8+omN4ntn7bvB+4kuzAKpu5DrYLFBfgCoYYtGZGfX0sAAAAASUVORK5CYII="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATpJREFUSEvFleFRwzAMhb9OQEeACYAJChuwAXQCGIVOUNiADYANYAIYASYo93JSTnWd2PFdiv+ksaL39J5kd8HMazEzPv9GcAPcAhem8BvYAC/2rvg9cGrvH8BziPfGpAqWwBYQQG692ebVQFwFrIEfj6cEquQc+AUegAj4CJxYosf1vZaUelx7lzmCO6teyZLeV2EfS10kzMVlpYqQiiflRQVKXsVgw4R5ke9AZ2Mk2BngGaBKWpaUf1lih31Ugtktcv/UPNmUNrFkmYZA9uiZbbIAfEz1vJ5AItBXG9fPcEAPrgofRZ2FWpIUXNMzeNCkYgrJKHg6RdHjGpIi+BhBSUkVeIlgiET7saF7nqejVvN/kNrll5umZRS8RoEXFEm0VwU+hSDapd/FynPXdemkNsVretAEfDQFf3ZDVxl/VBnpAAAAAElFTkSuQmCC"
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN5JREFUSEvtld0NAVEQRs9WQAeohBKUQAXogApQASUogU7ogArIt5mbjM1NdoeseNh52WTn5+x8c3duQctWtFyfHGACHIBhEH4F5sDZ5+UAChwEi6dw5Y7qAE8LiMqXzcsV6QBvqnQS+RPZnaLaf/v/JeoDW+tjBdwrPX3VwRpYAILIVHwHbBzkI8DUvjqt7osVHNtT21PdnIAwQHtdd4PsBszcrtf7o1vrPrbxqlDhByB5JEfOlubvOWdjwN6Sq8OsgjSXNCP5agFqV3JI34hpTpItyVrmRm+tCPA3gBfR5jsZb1ZtiAAAAABJRU5ErkJggg=="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQNJREFUSEvtlOERwUAQhb90oANK0AE6UAIVoBM60AEqQAXoQAlUwDxzMZtLzl2SyT/vZ2Zvv3dv95LRsbKO+9MU0AMeKeaaAq7AOAXSFPACBJnEIG0ASigKaQuIQmKAAbAAhi7z0FyDNwkBtCW7SFMfVgmpAsjtERCkrkoQH6BILg2b52YKEB9wAkZ1bXv1N2AK3PXdAhSN3LfRAZjZt2EBa7cxvwByp9n0K4o2wNL/bgF+PGdg6x6TcrXSS7aau9oS1wKUmZypsa75yTCgHPB0q+wb+B6zAB1aAYoqJtUWhhk6YAFyrUhStPeHmQJIaVy7JvYvqt3w1xa1blbV4H+DaKxv+tE1GZDEkqIAAAAASUVORK5CYII="
+              />
+            </div>
+          </div>
+        </label>
+
+        <label for="s4" id="slide4">
+          <div class="card">
+            <div class="image">
+              <img src="img/varios.jpeg" alt="" />
+              <div class="dots">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                <div class="dot3"></div>
+              </div>
+            </div>
+            <div class="infos">
+              <span class="name">Llavero Nike de Cuero</span>
+              <span class="lorem"
+                >Lorem ipsum dolor sit, sit amet elit. Aenean sit amet sit amet
+                vel velit sit ansd. Nulla eu sodales stellus</span
+              >
+            </div>
+            <a href="/contact" class="btn-contact">detalles</a>
+            <div class="socials">
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARJJREFUSEvd1M8xREEQBvDfRoAMiAARCAER4MqBEIiAC1dEgAyEQARkgAioT3lbr3hvZ97WbtWWPs709Penu2dkzjGac33/C+BzhnY9YTP12hbNEuADy78BGgEXOMYt9geqOsF5+21Xk1fxgnesDAR4xBYOcNOnIOfxcL2dWAEUS95+8kIsBHvHtJH6gJ2K4klJ3h2esdG86duDTjYFoFiyhzOclgByf4/tSvbttIxnLP6OSZucCboeAJDRzASO2ZcAcp9GLWENrwPAxqmlv6jxNXbtzgMgOxE/o6Im/hAuKWjGL2ObBSrFVAClohPvaxSkwCUOcYWjVsW+8+omN4ntn7bvB+4kuzAKpu5DrYLFBfgCoYYtGZGfX0sAAAAASUVORK5CYII="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATpJREFUSEvFleFRwzAMhb9OQEeACYAJChuwAXQCGIVOUNiADYANYAIYASYo93JSTnWd2PFdiv+ksaL39J5kd8HMazEzPv9GcAPcAhem8BvYAC/2rvg9cGrvH8BziPfGpAqWwBYQQG692ebVQFwFrIEfj6cEquQc+AUegAj4CJxYosf1vZaUelx7lzmCO6teyZLeV2EfS10kzMVlpYqQiiflRQVKXsVgw4R5ke9AZ2Mk2BngGaBKWpaUf1lih31Ugtktcv/UPNmUNrFkmYZA9uiZbbIAfEz1vJ5AItBXG9fPcEAPrgofRZ2FWpIUXNMzeNCkYgrJKHg6RdHjGpIi+BhBSUkVeIlgiET7saF7nqejVvN/kNrll5umZRS8RoEXFEm0VwU+hSDapd/FynPXdemkNsVretAEfDQFf3ZDVxl/VBnpAAAAAElFTkSuQmCC"
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN5JREFUSEvtld0NAVEQRs9WQAeohBKUQAXogApQASUogU7ogArIt5mbjM1NdoeseNh52WTn5+x8c3duQctWtFyfHGACHIBhEH4F5sDZ5+UAChwEi6dw5Y7qAE8LiMqXzcsV6QBvqnQS+RPZnaLaf/v/JeoDW+tjBdwrPX3VwRpYAILIVHwHbBzkI8DUvjqt7osVHNtT21PdnIAwQHtdd4PsBszcrtf7o1vrPrbxqlDhByB5JEfOlubvOWdjwN6Sq8OsgjSXNCP5agFqV3JI34hpTpItyVrmRm+tCPA3gBfR5jsZb1ZtiAAAAABJRU5ErkJggg=="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQNJREFUSEvtlOERwUAQhb90oANK0AE6UAIVoBM60AEqQAXoQAlUwDxzMZtLzl2SyT/vZ2Zvv3dv95LRsbKO+9MU0AMeKeaaAq7AOAXSFPACBJnEIG0ASigKaQuIQmKAAbAAhi7z0FyDNwkBtCW7SFMfVgmpAsjtERCkrkoQH6BILg2b52YKEB9wAkZ1bXv1N2AK3PXdAhSN3LfRAZjZt2EBa7cxvwByp9n0K4o2wNL/bgF+PGdg6x6TcrXSS7aau9oS1wKUmZypsa75yTCgHPB0q+wb+B6zAB1aAYoqJtUWhhk6YAFyrUhStPeHmQJIaVy7JvYvqt3w1xa1blbV4H+DaKxv+tE1GZDEkqIAAAAASUVORK5CYII="
+              />
+            </div>
+          </div>
+        </label>
+
+        <label for="s5" id="slide5">
+          <div class="card">
+            <div class="image">
+              <img src="img/azul.jpeg" alt="" />
+              <div class="dots">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                <div class="dot3"></div>
+              </div>
+            </div>
+            <div class="infos">
+              <span class="name">Llavero Nike de Cuero</span>
+              <span class="lorem"
+                >Lorem ipsum sit amet, sit amet elit. Aenean vel velit ansd .
+                Nullam lorem. Nulla eu sodales stellus</span
+              >
+            </div>
+            <a href="/contact" class="btn-contact">detalles</a>
+            <div class="socials">
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARJJREFUSEvd1M8xREEQBvDfRoAMiAARCAER4MqBEIiAC1dEgAyEQARkgAioT3lbr3hvZ97WbtWWPs709Penu2dkzjGac33/C+BzhnY9YTP12hbNEuADy78BGgEXOMYt9geqOsF5+21Xk1fxgnesDAR4xBYOcNOnIOfxcL2dWAEUS95+8kIsBHvHtJH6gJ2K4klJ3h2esdG86duDTjYFoFiyhzOclgByf4/tSvbttIxnLP6OSZucCboeAJDRzASO2ZcAcp9GLWENrwPAxqmlv6jxNXbtzgMgOxE/o6Im/hAuKWjGL2ObBSrFVAClohPvaxSkwCUOcYWjVsW+8+omN4ntn7bvB+4kuzAKpu5DrYLFBfgCoYYtGZGfX0sAAAAASUVORK5CYII="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATpJREFUSEvFleFRwzAMhb9OQEeACYAJChuwAXQCGIVOUNiADYANYAIYASYo93JSTnWd2PFdiv+ksaL39J5kd8HMazEzPv9GcAPcAhem8BvYAC/2rvg9cGrvH8BziPfGpAqWwBYQQG692ebVQFwFrIEfj6cEquQc+AUegAj4CJxYosf1vZaUelx7lzmCO6teyZLeV2EfS10kzMVlpYqQiiflRQVKXsVgw4R5ke9AZ2Mk2BngGaBKWpaUf1lih31Ugtktcv/UPNmUNrFkmYZA9uiZbbIAfEz1vJ5AItBXG9fPcEAPrgofRZ2FWpIUXNMzeNCkYgrJKHg6RdHjGpIi+BhBSUkVeIlgiET7saF7nqejVvN/kNrll5umZRS8RoEXFEm0VwU+hSDapd/FynPXdemkNsVretAEfDQFf3ZDVxl/VBnpAAAAAElFTkSuQmCC"
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN5JREFUSEvtld0NAVEQRs9WQAeohBKUQAXogApQASUogU7ogArIt5mbjM1NdoeseNh52WTn5+x8c3duQctWtFyfHGACHIBhEH4F5sDZ5+UAChwEi6dw5Y7qAE8LiMqXzcsV6QBvqnQS+RPZnaLaf/v/JeoDW+tjBdwrPX3VwRpYAILIVHwHbBzkI8DUvjqt7osVHNtT21PdnIAwQHtdd4PsBszcrtf7o1vrPrbxqlDhByB5JEfOlubvOWdjwN6Sq8OsgjSXNCP5agFqV3JI34hpTpItyVrmRm+tCPA3gBfR5jsZb1ZtiAAAAABJRU5ErkJggg=="
+              />
+              <img
+                style="width: 40px; height: 40px"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQNJREFUSEvtlOERwUAQhb90oANK0AE6UAIVoBM60AEqQAXoQAlUwDxzMZtLzl2SyT/vZ2Zvv3dv95LRsbKO+9MU0AMeKeaaAq7AOAXSFPACBJnEIG0ASigKaQuIQmKAAbAAhi7z0FyDNwkBtCW7SFMfVgmpAsjtERCkrkoQH6BILg2b52YKEB9wAkZ1bXv1N2AK3PXdAhSN3LfRAZjZt2EBa7cxvwByp9n0K4o2wNL/bgF+PGdg6x6TcrXSS7aau9oS1wKUmZypsa75yTCgHPB0q+wb+B6zAB1aAYoqJtUWhhk6YAFyrUhStPeHmQJIaVy7JvYvqt3w1xa1blbV4H+DaKxv+tE1GZDEkqIAAAAASUVORK5CYII="
+              />
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+html {
+  --timing: 6s;
+  height: 100vh;
+}
+
+body {
+  height: inherit;
+  display: grid;
+  -webkit-animation: atmosphere var(--timing) linear infinite;
+          animation: atmosphere var(--timing) linear infinite;
+}
+
+.container {
+  position: relative;
+  margin: auto;
+}
+
+.love {
+  position: relative;
+  width: 200px;
+  height: 180px;
+}
+.love::before, .love::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 150px;
+  background: black;
+  border-radius: 50px 50px 0 0;
+}
+.love::before {
+  left: 32px;
+  transform: rotate(-45deg);
+}
+.love::after {
+  left: 68px;
+  transform: rotate(45deg);
+}
+.love:first-of-type::after, .love:first-of-type::before {
+  background: #ffdd1a;
+}
+.love:last-of-type {
+  position: absolute;
+  top: 0;
+  right: -200px;
+  -webkit-animation: intercept var(--timing) linear infinite;
+          animation: intercept var(--timing) linear infinite;
+}
+.love:last-of-type::after, .love:last-of-type::before {
+  -webkit-animation: atmosphere var(--timing) linear infinite;
+          animation: atmosphere var(--timing) linear infinite;
+}
+
+@-webkit-keyframes intercept {
+  100% {
+    transform: translate(-400px);
+  }
+}
+
+@keyframes intercept {
+  100% {
+    transform: translate(-400px);
+  }
+}
+@-webkit-keyframes atmosphere {
+  0% {
+    background: skyblue;
+  }
+  50% {
+    background: black;
+  }
+  100% {
+    background: skyblue;
+  }
+}
+@keyframes atmosphere {
+  0% {
+    background: skyblue;
+  }
+  50% {
+    background: black;
+  }
+  100% {
+    background: skyblue;
+  }
+}
