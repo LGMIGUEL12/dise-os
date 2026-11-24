@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@800&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="fx" id="fx"></div>
+
+<main class="stage">
+  <svg class="steamer" id="steamer" viewBox="0 0 300 230" aria-label="Regalo">
+    <defs>
+      <pattern id="slats" width="9" height="80" patternUnits="userSpaceOnUse">
+        <rect width="9" height="80" fill="#ecd3a0"/>
+        <rect x="8" width="1" height="80" fill="#d9bb82"/>
+      </pattern>
+    </defs>
+
+    <!-- shadow -->
+    <ellipse cx="150" cy="212" rx="112" ry="9" fill="#000" opacity=".12"/>
+
+    <!-- back rim / inside -->
+    <ellipse cx="150" cy="132" rx="100" ry="14" fill="#c9a76a"/>
+    <ellipse cx="150" cy="134" rx="92" ry="10" fill="#a9844b"/>
+
+    <!-- steam puffs + music notes -->
+    <g class="puff"><circle cx="78" cy="88" r="7" fill="#fff"/><circle cx="86" cy="84" r="8" fill="#fff"/><circle cx="94" cy="89" r="6" fill="#fff"/></g>
+    <g class="puff" style="animation-delay:.6s"><circle cx="212" cy="80" r="7" fill="#fff"/><circle cx="221" cy="76" r="8" fill="#fff"/><circle cx="229" cy="82" r="6" fill="#fff"/></g>
+    <g class="note"><text x="232" y="70" font-size="18" fill="#1c1c1c">♪</text></g>
+    <g class="note n2"><text x="64" y="70" font-size="16" fill="#1c1c1c">♫</text></g>
+
+    <!-- buns -->
+    <g id="buns">
+      <!-- pink bun -->
+      <g class="bun b1">
+        <path d="M72,146 Q70,104 100,96 Q130,104 128,146 Z" fill="#f9d1d4"/>
+        <path d="M82,103 L104,98 L84,72 Z" fill="#f5c242"/>
+        <path d="M84,90 L96,88 M83,82 L90,81" stroke="#1c1c1c" stroke-width="3"/>
+        <circle cx="84" cy="71" r="3.5" fill="#1c1c1c"/>
+        <circle cx="91" cy="121" r="3.2" fill="#2b2b2b"/><circle cx="92" cy="120" r="1" fill="#fff"/>
+        <circle cx="109" cy="121" r="3.2" fill="#2b2b2b"/><circle cx="110" cy="120" r="1" fill="#fff"/>
+        <path d="M97,126 Q100,130 103,126" stroke="#2b2b2b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <ellipse class="blush" cx="84" cy="127" rx="4.5" ry="2.6" fill="#f39aa4"/>
+        <ellipse class="blush" cx="116" cy="127" rx="4.5" ry="2.6" fill="#f39aa4"/>
+      </g>
+
+      <!-- yellow cake with candle -->
+      <g class="bun b2">
+        <rect x="125" y="98" width="50" height="48" rx="9" fill="#f5c242"/>
+        <path d="M125,108 Q125,98 134,98 L166,98 Q175,98 175,108 Q170,112 165,108 Q160,113 155,108 Q150,113 145,108 Q140,113 135,108 Q130,113 125,108 Z" fill="#fff6dc"/>
+        <rect x="146" y="76" width="8" height="23" rx="2" fill="#fff"/>
+        <path d="M146,82 L154,79 M146,89 L154,86 M146,96 L154,93" stroke="#6aa8d8" stroke-width="2.5"/>
+        <line x1="150" y1="76" x2="150" y2="71" stroke="#1c1c1c" stroke-width="1.5"/>
+        <g id="flame">
+          <path d="M150,56 Q158,66 154,72 Q150,76 146,72 Q142,66 150,56 Z" fill="#ffb703"/>
+          <path d="M150,63 Q154,68 152,71 Q150,73 148,71 Q146,68 150,63 Z" fill="#fff3b0"/>
+        </g>
+        <circle class="smoke s1" cx="150" cy="66" r="4" fill="#bdbdbd"/>
+        <circle class="smoke s2" cx="148" cy="62" r="5" fill="#cfcfcf"/>
+        <circle class="smoke s3" cx="152" cy="58" r="4" fill="#bdbdbd"/>
+        <rect id="flame-hit" x="138" y="50" width="24" height="50" fill="transparent"/>
+        <circle cx="141" cy="123" r="3.2" fill="#2b2b2b"/><circle cx="142" cy="122" r="1" fill="#fff"/>
+        <circle cx="159" cy="123" r="3.2" fill="#2b2b2b"/><circle cx="160" cy="122" r="1" fill="#fff"/>
+        <path d="M147,128 Q150,132 153,128" stroke="#2b2b2b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <ellipse class="blush" cx="134" cy="129" rx="4.5" ry="2.6" fill="#f39a7a"/>
+        <ellipse class="blush" cx="166" cy="129" rx="4.5" ry="2.6" fill="#f39a7a"/>
+      </g>
+
+      <!-- white bun -->
+      <g class="bun b3">
+        <path d="M172,146 Q170,104 200,96 Q230,104 228,146 Z" fill="#fffaf2" stroke="#ece2d0" stroke-width="1.2"/>
+        <path d="M196,99 L218,103 L222,72 Z" fill="#1c1c1c"/>
+        <circle cx="206" cy="94" r="1.6" fill="#f5c242"/><circle cx="214" cy="88" r="1.6" fill="#fff"/><circle cx="217" cy="97" r="1.6" fill="#f9d1d4"/>
+        <circle cx="222" cy="71" r="3.5" fill="#f5c242"/>
+        <circle cx="191" cy="121" r="3.2" fill="#2b2b2b"/><circle cx="192" cy="120" r="1" fill="#fff"/>
+        <circle cx="209" cy="121" r="3.2" fill="#2b2b2b"/><circle cx="210" cy="120" r="1" fill="#fff"/>
+        <path d="M197,126 Q200,130 203,126" stroke="#2b2b2b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <ellipse class="blush" cx="184" cy="127" rx="4.5" ry="2.6" fill="#f7b3b8"/>
+        <ellipse class="blush" cx="216" cy="127" rx="4.5" ry="2.6" fill="#f7b3b8"/>
+        <path d="M193,135 L200,138 L193,141 Z M207,135 L200,138 L207,141 Z" fill="#1c1c1c"/>
+        <circle cx="200" cy="138" r="1.8" fill="#1c1c1c"/>
+      </g>
+    </g>
+
+    <!-- front body -->
+    <path d="M50,132 A100,14 0 0 0 250,132 L250,196 Q250,206 238,206 L62,206 Q50,206 50,196 Z" fill="url(#slats)"/>
+    <path d="M50,132 A100,14 0 0 0 250,132" fill="none" stroke="#f4e2bb" stroke-width="5"/>
+    <path d="M50,170 Q150,180 250,170" fill="none" stroke="#b8955a" stroke-width="2"/>
+    <path d="M50,190 Q150,198 250,190" fill="none" stroke="#b8955a" stroke-width="2"/>
+    <path d="M50,132 L50,196 Q50,206 62,206 L238,206 Q250,206 250,196 L250,132" fill="none" stroke="#c9a76a" stroke-width="2"/>
+    <!-- clasp -->
+    <path d="M196,172 L196,192 M191,182 L201,182" stroke="#a9844b" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- bunting -->
+    <path d="M62,146 Q150,164 238,146" fill="none" stroke="#8a6a3a" stroke-width="1"/>
+    <polygon points="82,149 98,152 89,166" fill="#1c1c1c"/>
+    <polygon points="110,154 126,156 117,170" fill="#f5c242"/>
+    <polygon points="140,156 156,156 148,170" fill="#fff"/>
+    <polygon points="170,155 186,153 179,169" fill="#f5c242"/>
+    <polygon points="200,152 216,149 209,164" fill="#1c1c1c"/>
+
+    <!-- lid -->
+    <g id="lid">
+      <path d="M46,120 L46,132 A104,15 0 0 0 254,132 L254,120 Z" fill="#dcbd84"/>
+      <path d="M46,120 L46,132 A104,15 0 0 0 254,132 L254,120" fill="none" stroke="#c9a76a" stroke-width="1.5"/>
+      <ellipse cx="150" cy="120" rx="104" ry="15" fill="#efd8a8" stroke="#c9a76a" stroke-width="1.5"/>
+      <ellipse cx="150" cy="120" rx="88" ry="11" fill="none" stroke="#dcbd84" stroke-width="2"/>
+      <!-- knot -->
+      <path d="M150,112 C140,100 128,108 138,114 C142,116 146,114 150,112 C154,114 158,116 162,114 C172,108 160,100 150,112 Z" fill="none" stroke="#1c1c1c" stroke-width="3"/>
+      <circle cx="150" cy="112" r="4" fill="#f5c242" stroke="#1c1c1c" stroke-width="1.5"/>
+    </g>
+
+    <!-- zzz -->
+    <text class="zzz z1" x="166" y="96" font-size="12">z</text>
+    <text class="zzz z2" x="172" y="88" font-size="10">z</text>
+    <text class="zzz z3" x="178" y="80" font-size="8">z</text>
+  </svg>
+
+  <h1 id="title">¡Sorpresa para Ti!</h1>
+  <p class="hint" id="hint">🎁 Toca para abrir tu regalo</p>
+  <button class="btn" id="btn">🕯️ Soplar la velita</button>
+</main>
+
+<button class="hearts-btn" id="hearts" aria-label="Corazones">💕</button>
+
+<div class="overlay" id="overlay">
+  <div class="letter">
+    <button class="close" id="close" aria-label="Cerrar">✕</button>
+    <h2>¡Feliz cumpleaños! ❤️</h2>
+    <p>Espero este de maravilla, lo pase bien, cuidese mucho y cumpla muchos años mas de vida.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

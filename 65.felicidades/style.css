@@ -1,0 +1,546 @@
+/* =========================================================
+   Base
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #05010d;
+  color: #fff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* =========================================================
+   Regalo (pantalla inicial)
+   ========================================================= */
+:root {
+  --s: 170px;          /* tamaño de la caja */
+  --l: 184px;          /* tamaño de la tapa */
+  --lh: 34px;          /* alto de la tapa */
+  --gold: #f4b740;
+  --gold-dark: #d99a22;
+  --rib: 26px;         /* ancho del listón */
+}
+
+.gift-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(160deg, #f49ac8 0%, #f6a9bd 40%, #f5c39f 75%, #e9b47c 100%);
+  transition: opacity 1.2s ease;
+}
+
+/* Al abrirse el regalo, la pantalla se desvanece y deja ver la galaxia */
+.gift-screen.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Fondo bokeh ---------- */
+.bokeh {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.bokeh span {
+  position: absolute;
+  border-radius: 50%;
+  opacity: .55;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.bokeh span:nth-child(1) { width: 260px; height: 260px; background: #ff7eb6; top: -60px;  left: -40px; }
+.bokeh span:nth-child(2) { width: 200px; height: 200px; background: #ffd29a; top: 55%;   left: 70%;  animation-duration: 22s; }
+.bokeh span:nth-child(3) { width: 180px; height: 180px; background: #c98a4b; top: 70%;   left: 10%;  opacity: .35; animation-duration: 16s; }
+.bokeh span:nth-child(4) { width: 140px; height: 140px; background: #ff9ec7; top: 15%;   left: 75%;  animation-duration: 20s; }
+.bokeh span:nth-child(5) { width: 120px; height: 120px; background: #fff0c9; top: 40%;   left: 30%;  opacity: .4; animation-duration: 24s; }
+.bokeh span:nth-child(6) { width: 220px; height: 220px; background: #d9844f; top: 80%;   left: 55%;  opacity: .3; animation-duration: 19s; }
+.bokeh span:nth-child(7) { width: 160px; height: 160px; background: #ffb3d1; top: 5%;    left: 40%;  animation-duration: 26s; }
+
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(60px, -40px) scale(1.2); }
+}
+
+/* ---------- Escenario ---------- */
+.stage {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  padding: 0 16px;
+}
+
+.instruction {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  color: #4a3a3f;
+  text-align: center;
+  transition: opacity .5s ease;
+}
+
+.instruction.hidden {
+  opacity: .25;
+}
+
+.scene {
+  position: relative;
+  width: var(--s);
+  height: var(--s);
+  perspective: 1000px;
+}
+
+.float {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: float 3s ease-in-out infinite;
+}
+
+.float:has(.box.open) {
+  animation-play-state: paused;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: rotateX(-22deg) rotateY(-35deg);
+  transition: transform 1s cubic-bezier(.5, 0, .2, 1);
+  outline: none;
+}
+
+.box:not(.open):hover {
+  animation: wiggle .6s ease-in-out;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotateX(-22deg) rotateY(-35deg); }
+  25%      { transform: rotateX(-22deg) rotateY(-35deg) rotateZ(4deg); }
+  75%      { transform: rotateX(-22deg) rotateY(-35deg) rotateZ(-4deg); }
+}
+
+.box.open {
+  transform: rotateX(-62deg) rotateY(-35deg) scale(.95);
+}
+
+.face,
+.lid-top,
+.lid-side {
+  position: absolute;
+  backface-visibility: visible;
+}
+
+/* Caras de la caja */
+.face {
+  width: var(--s);
+  height: var(--s);
+  left: 0;
+  top: 0;
+  transition: transform .9s cubic-bezier(.6, -0.1, .3, 1.2);
+}
+
+.side {
+  transform-origin: 50% 100%;
+  background:
+    linear-gradient(90deg,
+      transparent calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% + var(--rib) / 2),
+      transparent calc(50% + var(--rib) / 2)),
+    var(--c);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, .12);
+}
+
+.front { --c: #d81b60; transform: translateZ(calc(var(--s) / 2)) rotateX(0deg); }
+.back  { --c: #b0144f; transform: translateZ(calc(var(--s) / -2)) rotateY(180deg) rotateX(0deg); }
+.right { --c: #bf1655; transform: rotateY(90deg)  translateZ(calc(var(--s) / 2)) rotateX(0deg); }
+.left  { --c: #c71a5a; transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)) rotateX(0deg); }
+
+.bottom {
+  background:
+    linear-gradient(90deg,
+      transparent calc(50% - var(--rib) / 2),
+      var(--gold-dark) calc(50% - var(--rib) / 2),
+      var(--gold-dark) calc(50% + var(--rib) / 2),
+      transparent calc(50% + var(--rib) / 2)),
+    linear-gradient(0deg,
+      transparent calc(50% - var(--rib) / 2),
+      var(--gold-dark) calc(50% - var(--rib) / 2),
+      var(--gold-dark) calc(50% + var(--rib) / 2),
+      transparent calc(50% + var(--rib) / 2)),
+    #a3124a;
+  transform: rotateX(90deg) translateZ(calc(var(--s) / -2 + 1px));
+}
+
+/* Al abrir: las paredes caen hacia afuera y forman una cruz */
+.box.open .front { transform: translateZ(calc(var(--s) / 2)) rotateX(-90deg); }
+.box.open .back  { transform: translateZ(calc(var(--s) / -2)) rotateY(180deg) rotateX(-90deg); }
+.box.open .right { transform: rotateY(90deg)  translateZ(calc(var(--s) / 2)) rotateX(-90deg); }
+.box.open .left  { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)) rotateX(-90deg); }
+
+/* Tapa */
+.lid {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform .8s cubic-bezier(.5, 0, .5, 1) .7s, opacity .6s ease .7s;
+}
+
+.box.open .lid {
+  transform: translateY(-320px) rotateX(35deg) rotateZ(-25deg);
+  opacity: 0;
+}
+
+.lid-top {
+  width: var(--l);
+  height: var(--l);
+  left: calc((var(--s) - var(--l)) / 2);
+  top: calc((var(--s) - var(--l)) / 2);
+  background:
+    linear-gradient(90deg,
+      transparent calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% + var(--rib) / 2),
+      transparent calc(50% + var(--rib) / 2)),
+    linear-gradient(0deg,
+      transparent calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% + var(--rib) / 2),
+      transparent calc(50% + var(--rib) / 2)),
+    #e5266c;
+  transform: translateY(calc(var(--s) / -2 - 2px)) rotateX(90deg);
+}
+
+.lid-side {
+  width: var(--l);
+  height: var(--lh);
+  left: calc((var(--s) - var(--l)) / 2);
+  top: calc((var(--s) - var(--lh)) / 2);
+  background:
+    linear-gradient(90deg,
+      transparent calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% - var(--rib) / 2),
+      var(--gold) calc(50% + var(--rib) / 2),
+      transparent calc(50% + var(--rib) / 2)),
+    var(--c);
+  box-shadow: inset 0 -6px 10px rgba(0, 0, 0, .15);
+}
+
+.l-front { --c: #e0205f; transform: translateY(calc(var(--s) / -2 + var(--lh) / 2 - 2px)) translateZ(calc(var(--l) / 2)); }
+.l-back  { --c: #b51552; transform: translateY(calc(var(--s) / -2 + var(--lh) / 2 - 2px)) rotateY(180deg) translateZ(calc(var(--l) / 2)); }
+.l-right { --c: #c6195a; transform: translateY(calc(var(--s) / -2 + var(--lh) / 2 - 2px)) rotateY(90deg)  translateZ(calc(var(--l) / 2)); }
+.l-left  { --c: #cf1c5e; transform: translateY(calc(var(--s) / -2 + var(--lh) / 2 - 2px)) rotateY(-90deg) translateZ(calc(var(--l) / 2)); }
+
+/* Sombra en el piso */
+.shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -55px;
+  width: 190px;
+  height: 30px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(90, 30, 40, .35), transparent 70%);
+  animation: shadow 3s ease-in-out infinite;
+  transition: opacity .6s;
+}
+
+.scene:has(.box.open) .shadow {
+  opacity: 0;
+}
+
+@keyframes shadow {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50%      { transform: translateX(-50%) scale(.85); }
+}
+
+/* ---------- Confeti ---------- */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 30;
+}
+
+.confetti {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 6px;
+  border-radius: 2px;
+  opacity: .9;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--dx), 110vh) rotate(var(--rot));
+  }
+}
+
+/* Destello que sale de la caja y cubre la pantalla */
+.burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #ffe9f6 35%, rgba(255, 200, 235, 0) 70%);
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.gift-screen.bursting .burst {
+  animation: burst 1.4s cubic-bezier(.3, 0, .2, 1) forwards;
+}
+
+@keyframes burst {
+  0%   { opacity: 0;  transform: scale(0); }
+  25%  { opacity: 1; }
+  100% { opacity: 1;  transform: scale(90); }
+}
+
+@media (max-width: 500px) {
+  :root {
+    --s: 130px;
+    --l: 142px;
+    --lh: 28px;
+    --rib: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float, .bokeh span, .shadow {
+    animation: none;
+  }
+}
+
+/* Retrasos: al abrir cae la tapa y luego las paredes */
+.box.open .face { transition-delay: .45s; }
+.box.open .lid  { transition: transform .8s cubic-bezier(.5, 0, .5, 1), opacity .6s ease .25s; }
+
+/* =========================================================
+   Galaxia
+   ========================================================= */
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+
+#scene.dragging {
+  cursor: grabbing;
+}
+
+#scene.over-photo {
+  cursor: pointer;
+}
+
+/* Pista de uso */
+#hint {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  font-size: 13px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  text-align: center;
+  color: #ffe3f2;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+#hint.show {
+  opacity: 1;
+}
+
+/* Visor de fotos */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 1, 13, 0.88);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  z-index: 10;
+}
+
+#lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lb-figure {
+  max-width: 92vw;
+  max-height: 86vh;
+  transform: scale(0.85);
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+#lightbox.open .lb-figure {
+  transform: scale(1);
+}
+
+/* Tarjeta de cumpleaños: foto arriba, mensaje abajo */
+.lb-figure {
+  width: min(440px, calc(100vw - 32px));
+  padding: 14px 14px 20px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.8), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(255, 200, 230, 0.5), transparent 45%),
+    #fff5fa;
+  box-shadow: 0 0 30px rgba(255, 111, 181, 0.7), 0 0 80px rgba(176, 92, 255, 0.45);
+  text-align: center;
+  user-select: text;
+}
+
+#lb-img {
+  display: block;
+  max-width: 100%;
+  max-height: 56vh;
+  margin: 0 auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.lb-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 6px 0;
+}
+
+.lb-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: clamp(1.3rem, 5vw, 1.7rem);
+  color: #d63a6e;
+}
+
+.lb-msg {
+  font-family: 'Quicksand', "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 3.6vw, 1.05rem);
+  line-height: 1.5;
+  color: #6b4a5a;
+}
+
+.lb-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.lb-btn:hover {
+  background: rgba(255, 111, 181, 0.45);
+  transform: scale(1.08);
+}
+
+.lb-close {
+  top: 16px;
+  right: 16px;
+}
+
+.lb-prev {
+  left: 16px;
+  top: 50%;
+  margin-top: -24px;
+}
+
+.lb-next {
+  right: 16px;
+  top: 50%;
+  margin-top: -24px;
+}
+
+.lb-count {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #ffd1ec;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .lb-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 26px;
+  }
+
+  .lb-prev,
+  .lb-next {
+    top: auto;
+    bottom: 10px;
+    margin-top: 0;
+  }
+
+  .lb-prev { left: 20px; }
+  .lb-next { right: 20px; }
+
+  #hint {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#05010d">
+  <title>Felicidades</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== Galaxia (detrás, arranca al abrir el regalo) ===== -->
+  <canvas id="scene"></canvas>
+
+  <div id="hint">Arrastra para girar · Toca una foto para verla</div>
+
+  <div id="lightbox" aria-hidden="true">
+    <button class="lb-btn lb-close" aria-label="Cerrar">&times;</button>
+    <button class="lb-btn lb-prev" aria-label="Anterior">&#8249;</button>
+    <!-- Tarjeta: foto + mensaje de cumpleaños -->
+    <figure class="lb-figure">
+      <img id="lb-img" alt="Foto">
+      <figcaption class="lb-caption">
+        <span class="lb-title">¡Feliz Cumpleaños!</span>
+        <span id="lb-msg" class="lb-msg"></span>
+      </figcaption>
+    </figure>
+    <button class="lb-btn lb-next" aria-label="Siguiente">&#8250;</button>
+    <div class="lb-count" id="lb-count"></div>
+  </div>
+
+  <!-- ===== Regalo (pantalla inicial) ===== -->
+  <div id="giftScreen" class="gift-screen">
+    <!-- Fondo con luces desenfocadas -->
+    <div class="bokeh" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <main class="stage">
+      <h1 id="instructionText" class="instruction">Haz clic en el regalo...</h1>
+
+      <div class="scene">
+        <div class="float">
+          <div id="giftBox" class="box" role="button" tabindex="0" aria-label="Abrir regalo">
+            <div class="face bottom"></div>
+            <div class="face side front"></div>
+            <div class="face side back"></div>
+            <div class="face side right"></div>
+            <div class="face side left"></div>
+            <div class="lid">
+              <div class="lid-top"></div>
+              <div class="lid-side l-front"></div>
+              <div class="lid-side l-back"></div>
+              <div class="lid-side l-right"></div>
+              <div class="lid-side l-left"></div>
+            </div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+        <!-- Destello que sale de la caja al abrirse -->
+        <div class="burst" aria-hidden="true"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Confeti -->
+  <div id="confetti-container" class="confetti-container" aria-hidden="true"></div>
+
+  <script src="galaxia.js"></script>
+  <script src="regalo.js"></script>
+</body>
+</html>

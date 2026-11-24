@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #05060f;
+}
+
+/* ---------- Pantalla de inicio ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 62%, rgba(214, 110, 20, 0.55), rgba(120, 50, 8, 0.25) 45%, transparent 75%),
+    #080404;
+  transition: opacity 1.2s ease;
+}
+
+.intro.oculto {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boton-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18vh;
+  padding: 16px 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  animation: latido 2.4s ease-in-out infinite;
+}
+
+.icono-girasol {
+  width: 46px;
+  height: 46px;
+  filter: drop-shadow(0 0 10px rgba(255, 190, 40, 0.8));
+  animation: girar 12s linear infinite;
+}
+
+.texto-inicio,
+.preparando {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: clamp(10px, 1.6vw, 14px);
+  letter-spacing: 2px;
+  color: #ffd35a;
+  text-shadow: 0 0 6px #ffae00, 0 0 16px rgba(255, 150, 0, 0.7);
+}
+
+.boton-inicio:hover .texto-inicio {
+  color: #fff1b8;
+}
+
+.preparando {
+  margin-top: 18vh;
+  animation: parpadeo 1.2s ease-in-out infinite;
+}
+
+.puntos::after {
+  content: "";
+  animation: puntos 1.5s steps(4) infinite;
+}
+
+/* ---------- Escena ---------- */
+.escena {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  cursor: grab;
+  touch-action: none;
+}
+
+.escena.visible {
+  opacity: 1;
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes puntos {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+}

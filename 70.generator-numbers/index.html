@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>random number generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-box">
+      <h2>Random number between:</h2>
+      <form>
+        <div class="user-box">
+          <input type="number" class="start" />
+          <label>Value 1</label>
+        </div>
+        <div class="user-box">
+          <input type="number" class="end" />
+          <label>Value 2</label>
+        </div>
+        <a
+          type="button"
+          class="boton-new"
+          value="Generate Number"
+          onclick="getRandom()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Generate Number
+        </a>
+      </form>
+      <hr />
+      <h2 class="number"></h2>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

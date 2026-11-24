@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flores amarillas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Pantalla de inicio -->
+  <div id="intro" class="intro">
+    <button id="empezar" class="boton-inicio" type="button">
+      <svg class="icono-girasol" viewBox="0 0 64 64" aria-hidden="true">
+        <g transform="translate(32 32)">
+          <g fill="#FFC928">
+            <ellipse rx="7" ry="14" cy="-16"/>
+            <ellipse rx="7" ry="14" cy="-16" transform="rotate(45)"/>
+            <ellipse rx="7" ry="14" cy="-16" transform="rotate(90)"/>
+            <ellipse rx="7" ry="14" cy="-16" transform="rotate(135)"/>
+            <ellipse rx="7" ry="14" cy="-16" transform="rotate(180)"/>
+            <ellipse rx="7" ry="14" cy="-16" transform="rotate(225)"/>
+            <ellipse rx="7" ry="14" cy="-16" transform="rotate(270)"/>
+            <ellipse rx="7" ry="14" cy="-16" transform="rotate(315)"/>
+          </g>
+          <circle r="11" fill="#D9531E"/>
+          <circle r="6" fill="#9A2F0E"/>
+        </g>
+      </svg>
+      <span class="texto-inicio">EMPEZAR VIAJE</span>
+    </button>
+    <p id="preparando" class="preparando" hidden>PREPARANDO TU VIAJE<span class="puntos"></span></p>
+  </div>
+
+  <!-- Escena del viaje -->
+  <canvas id="escena" class="escena"></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>

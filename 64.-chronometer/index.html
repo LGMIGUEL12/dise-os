@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cronometro</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="/img/illustration-of-hourglass-icon-free-vector.webp"
+    />
+  </head>
+  <body>
+    <div class="contador">
+      <div class="marco">
+        <div class="tiempo" id="tiempo">00:00:00.000</div>
+        <div class="botones-contenedor">
+          <div class="btn" onclick="iniciar()">
+            <i class="material-icons" style="font-size: 30px">play_arrow</i>
+          </div>
+          <div class="btn" onclick="pausar()">
+            <i class="material-icons" style="font-size: 30px">pause</i>
+          </div>
+          <div class="btn" onclick="reiniciar()">
+            <i class="material-icons" style="font-size: 30px">refresh</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

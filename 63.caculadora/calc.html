@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="calc.css" />
+    <link
+      rel="icon"
+      href="/img/433-4337679_icono-calcular-png-clipart-symbol-calculator-computer-simbolos-de-la-calculadora.png"
+    />
+  </head>
+  <body>
+    <div>
+      <table class="calculadora">
+        <tr>
+          <td colspan="4"><span id="resultado"></span></td>
+        </tr>
+        <tr>
+          <td><button onclick="insertar(event)" value="7" >7</button></td>
+          <td><button onclick="insertar(event)" value="8">8</button></td>
+          <td><button onclick="insertar(event)" value="9">9</button></td>
+          <td><button onclick="insertar(event)" value="/">/</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="insertar(event)" value="4">4</button></td>
+          <td><button onclick="insertar(event)" value="5">5</button></td>
+          <td><button onclick="insertar(event)" value="6">6</button></td>
+          <td><button onclick="insertar(event)" value="*">*</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="insertar(event)" value="1">1</button></td>
+          <td><button onclick="insertar(event)" value="2">2</button></td>
+          <td><button onclick="insertar(event)" value="3">3</button></td>
+          <td><button onclick="insertar(event)" value="-">-</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="mostrar()" id="listo">=</button></td>
+          <td><button onclick="insertar(event)" value="0">0</button></td>
+          <td><button onclick="limpiar()" id="borrar">c</button></td>
+          <td><button onclick="insertar(event)" value="+">+</button></td>
+        </tr>
+      </table>
+    </div>
+    <script src="calc.js"></script>
+  </body>
+</html>
